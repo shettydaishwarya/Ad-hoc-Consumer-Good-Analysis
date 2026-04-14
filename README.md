@@ -38,203 +38,175 @@ This project uses multiple tables from the AtliQ Hardwares database (gdb023) to 
 
 (Database tables from gdb023)
 
-![Dataset Preview](Resources/Capture4.PNG)
+![Dataset Preview](Resources/Database_table.PNG)
 
 ## Ad Hoc Request 1
+
 Provide the list of markets in which customer "Atliq Exclusive" operates its
 business in the APAC region.
 
 ### SQL Query Used
-🔗 [View SQL Query](Queries/adhoc_1_croma_product_sales.sql)
+
+🔗 [View SQL Query](Queries/Request_1.sql)
 
 ### 📊 Output Preview
-Below is a snapshot of the output (partial view due to large dataset):
+
 ![Output](Resources/Capture1.PNG)
 
-🧩 Ad Hoc Request 2 — Gross Monthly Total Sales Report for Croma
-📄 Problem Statement
-As a product owner, I need an aggregate monthly gross sales report for Croma India so that I can track how much sales this particular customer is generating for AtliQ Hardwares and manage our relationship accordingly.
+## Ad Hoc Request 2
 
-🎯 Objective
-Calculate the total monthly gross sales amount for Croma India.
-Understand customer contribution to overall sales.
-Enable data-driven decisions for partnership management.
-🧠 SQL Query Used
-🔗 View SQL Query
+What is the percentage of unique product increase in 2021 vs. 2020? The final output contains these fields,
+unique_products_2020
+unique_products_2021
+percentage_chg
 
-📊 Output Preview
-Below is a snapshot of the output (partial view):
-Output
+### SQL Query Used
 
-⚙️ Stored Procedure Automation
-Here you can see — this task was quite repetitive.
-Because tomorrow the product owner might ask for the same report for Amazon or eBay, I created a stored procedure called
-get_monthly_gross_sales_for_customer.
+🔗 [View SQL Query](Queries/Request_2.sql)
 
-Now, by simply entering the customer code, the report is automatically generated — no need to rewrite the query every time.
+### 📊 Output Preview
 
-🧠 Stored Procedure Query
-🔗 View SQL Query Stored Procedure
+![Output](Resources/Capture2.PNG)
 
-📊 Sample Output (Amazon Example)
-Below is an example of the stored procedure output when the input is set for Amazon:
-Iutput Output
+## Ad Hoc Request 3
 
-🧩 Ad Hoc Request 3 — Market Badge Stored Procedure
-📄 Problem Statement
-As a product owner, I want to create a stored procedure that determines the market badge based on total sold quantity.
-If the total sold quantity exceeds 5 million units, the market is considered Gold; otherwise, it is Silver.
+Provide a report with all the unique product counts for each segment and
+sort them in descending order of product counts. The final output contains 2 fields,
+segment
+product_count
 
-🎯 Objective
-Categorize markets as Gold or Silver based on total sales volume.
-Enable quick classification by market and fiscal year.
-Simplify repetitive reporting through automation.
-⚙️ Stored Procedure Query
-🔗 View SQL Query
+### SQL Query Used
 
-📊 Output Preview
-Below is the sample output for market Inadia for fiscal_year 2021:
-Input Output
+🔗 [View SQL Query](Queries/Request_3.sql)
 
-🧩 Ad Hoc Request 4 — Top Markets, Products, and Customers by Net Sales
-📄 Problem Statement
-As a product owner, I want a report for top markets, products, and customers by net sales for a given financial year.
-This will help provide a holistic view of AtliQ's financial performance and enable better business decisions.
 
-🧱 Step 1: Creating the Net Sales View
-Before creating stored procedures, I built a Net Sales View that combines necessary data (e.g., gross sales, discounts, and other adjustments) into one clean, reusable table.
+### 📊 Output Preview
 
-📸 View structure preview:
-Net Sales View
+![Output](Resources/Capture3.PNG)
 
-⚙️ Step 2: Stored Procedures for Analysis
-I created three separate stored procedures to fetch the top markets, top products, and top customers for any given financial year.
+## Ad Hoc Request 4
 
-🥇 Stored Procedure 1 — Top Markets by Net Sales
-🔗 View Query
+Follow-up: Which segment had the most increase in unique products in 2021 vs 2020? The final output contains these fields, 
+segment
+product_count_2020
+product_count_2021 
+difference
 
-📊 Below is the sample output when fiscal_year = 2021 and top_n = 3:
-Input Output
+### SQL Query Used
 
-🧴 Stored Procedure 2 — Top Products by Net Sales
-🔗 View Query
+🔗 [View SQL Query](Queries/Request_4.sql)
 
-📊 Below is the sample output when fiscal_year = 2021 and top_n = 5
-Input Output
+### 📊 Output Preview
 
-👥 Stored Procedure 3 — Top Customers by Net Sales
-🔗 View Query
+![Output](Resources/Capture4.PNG)
 
-📊 Below is the sample output when fiscal_year = 2021 and top_n = 5:
-Input Output
+## Ad Hoc Request 5
 
-💡 Key Insight
-By modularizing these stored procedures, we can reuse them across different dashboards or analysis tasks without rewriting the logic.
-This approach ensures consistency, maintainability, and automation in reporting.
+Get the products that have the highest and lowest manufacturing costs. 
+The final output should contain these fields, 
+product_code
+product 
+product manufacturing_cost
 
-🌍 Ad Hoc Request 5 — Net Sales % Share (Global)
-📄 Problem Statement
-As a product owner, I want to see a bar chart report for FY-2021 showing the top 10 markets by % Net Sales.
-It should look something like this 👇
-(The sample shared by the product owner was based on top customers instead of markets.) 📸 Reference Chart Provided:
-Adhoc 5 Sample Chart
+### SQL Query Used
 
-🧠 Step 1: SQL Query
-To calculate the Net Sales % share, I wrote a SQL query that finds the top customers for FY-2021 based on their contribution to total Net Sales.
+🔗 [View SQL Query](Queries/Request_5.sql)
 
-🔗 View SQL Query
+### 📊 Output Preview
 
-📊 Step 2: Query Output
-Below is the SQL output, which shows the top customers along with their net sales percentage share.
+![Output](Resources/Capture5.PNG)
 
-📸 Sample Output:
-Adhoc 5 Output
 
-📈 Step 3: Visualization
-After verifying the results, I exported the data to Excel and created a bar chart to visualize the top 10 customers by % net sales for FY-2021.
+## Ad Hoc Request 6
 
-📸 Excel Chart Preview:
-Adhoc 5 Excel Chart
+Generate a report which contains the top 5 customers who received 
+an average high pre_invoice_discount_pct for the fiscal year 2021 and in the Indian market. 
+The final output contains these fields, 
+customer_code 
+customer 
+average_discount_percentage
 
-💡 Key Insight
-The analysis highlights which customers contributed the most to the company’s total net sales in FY-2021, helping identify top revenue drivers for better business planning.
+### SQL Query Used
 
-🧾 Ad Hoc Request 6 — Top N Products by Quantity Sold (Per Division)
-📄 Problem Statement
-As a product owner, I want to get the Top N products in each division based on their quantity sold for a given financial year.
-This helps analyze which products are performing best within each division.
+🔗 [View SQL Query](Queries/Request_6.sql)
 
-⚙️ Stored Procedure
-To make this reusable, I created a stored procedure that dynamically takes two inputs:
+### 📊 Output Preview
 
-in_fiscal_year → Financial year to analyze
-in_top_n → Number of top products to display per division
-🔗 View Stored Procedure Query
+![Output](Resources/Capture6.PNG)
 
-🧩 Input Example
-📸 Passing parameters to the stored procedure:
-Input
+## Ad Hoc Request 7
 
-📊 Output Preview
-📸 Generated output showing top N products by division:
-Output
+Get the complete report of the Gross sales amount for the customer “Atliq Exclusive” for each month . 
+This analysis helps to get an idea of low and high-performing months and take strategic decisions. 
+The final report contains these columns: 
+Month 
+Year 
+Gross sales Amount
 
-💡 Key Insight
-This stored procedure helps quickly identify best-performing products within each division, reducing manual effort and improving decision-making for inventory and sales strategy.
+### SQL Query Used
 
-🧾 Ad Hoc Request 7 — Forecast Accuracy for All Customers
-📄 Problem Statement
-As a product owner, I need an aggregate forecast accuracy report for all customers for a given fiscal year, so that I can track how accurate our forecasts are compared to actual sales.
+🔗 [View SQL Query](Queries/Request_7.sql)
 
-The report includes the following fields:
+### 📊 Output Preview
 
-Customer Code, Name, Market
-Total Sold Quantity
-Total Forecast Quantity
-Net Error
-Absolute Error
-Forecast Accuracy %
-⚙️ Data Preparation
-To achieve this, I first created a new table called fact_act_est by combining both fact_sales_monthly and fact_forecast_monthly tables.
+![Output](Resources/Capture7.PNG)
 
-I used LEFT JOIN and RIGHT JOIN to ensure we include customers who had sales but no forecast and forecast but no sales.
-This ensures no data is missed.
-Then, I updated all NULL values to 0, as instructed by the product owner.
-🔗 View Table Creation & Data Cleaning Queries
+## Ad Hoc Request 8
 
-📸 Transformed table preview (fact_act_est):
-fact_act_est Table
+In which quarter of 2020, got the maximum total_sold_quantity? 
+The final output contains these fields sorted by the 
+total_sold_quantity, Quarter total_sold_quantity
 
-🧩 Stored Procedure
-After preparing the data, I created a stored procedure to calculate forecast accuracy for each customer.
-It takes the fiscal year as input and outputs the forecast accuracy % based on total forecast and actual sales data.
+### SQL Query Used
 
-🔗 View Stored Procedure Query
+🔗 [View SQL Query](Queries/Request_8.sql)
 
-🖥️ Procedure Execution
-📥 Input: Fiscal Year (e.g., 2021)
-Input
+### 📊 Output Preview
 
-📤 Output: Forecast accuracy report with all customer details
-Output
+![Output](Resources/Capture8.PNG)
 
-💡 Key Insight
-This stored procedure automates the forecast accuracy calculation and ensures that product owners can easily monitor prediction performance for each customer.
-It helps identify gaps between actual and forecasted sales, allowing the business to improve its planning and forecasting models.
+## Ad Hoc Request 9
+
+Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution? 
+The final output contains these fields, 
+channel 
+gross_sales_mln 
+percentage
+
+### SQL Query Used
+
+🔗 [View SQL Query](Queries/Request_9.sql)
+
+### 📊 Output Preview
+
+![Output](Resources/Capture9.PNG)
+
+## Ad Hoc Request 10
+Get the Top 3 products in each division that have a high total_sold_quantity in the fiscal_year 2021? 
+    The final output contains these fields, 
+    division 
+    product_code
+
+### SQL Query Used
+
+🔗 [View SQL Query](Queries/Request_10.sql)
+
+### 📊 Output Preview
+
+![Output](Resources/Capture10.PNG)
+
+![Output](Resources/Capture10_1.PNG)
 
 🏁 Conclusion
 Through this SQL project, I explored a series of real-world ad-hoc business requests and delivered insights that a product owner or analyst would typically need.
-
-Each request focused on solving a specific business problem — from sales performance and forecast accuracy to market share tracking — using
-SQL queries, CTEs (Common Table Expressions), joins, stored procedures, and aggregate functions.
 
 💡 Key Learnings
 This project helped me strengthen my ability to:
 
 🧩 Write clean, modular SQL queries for analytical needs
-🔗 Use joins, subqueries, CTEs, and stored procedures effectively
+🔗 Use joins, subqueries, CTEs, window function, group by, order by
 📊 Translate business questions into data-driven insights
 📈 Final Takeaway
 This project represents how a data analyst would handle, analyze, and present business data using SQL in a real-world environment.
 
-✅ This concludes the Ad Hoc Analysis Project for AtliQ Hardwares.
+✅ This concludes the Ad Hoc Consumer Analysis Project for AtliQ Hardwares.
