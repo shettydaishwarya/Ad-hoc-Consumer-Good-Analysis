@@ -49,7 +49,7 @@ business in the APAC region.
 
 ### 📊 Output Preview
 Below is a snapshot of the output (partial view due to large dataset):
-[Output]
+![Output](Resources/Capture1.PNG)
 
 🧩 Ad Hoc Request 2 — Gross Monthly Total Sales Report for Croma
 📄 Problem Statement
