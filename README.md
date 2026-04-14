@@ -1,7 +1,7 @@
-# Ad-hoc-Analysis-AtliQ-Hardwares-
+# Ad-hoc Consumer Goods Analysis for AtliQ-Hardwares
 SQL Ad-hoc Analysis Project for AtliQ Hardwares using MySQL
 
-🎥 Watch Video Explanation : https://youtu.be/cDtLC7lCQw0
+🎥 Watch Video Explanation : https://youtu.be/VYzl8dWwld4
 
 ## Problem Statement
 AtliQ Hardwares is a computer hardware manufacturing company that sells products globally through various channels like Amazon, Croma, and Best Buy. AtliQ Hardwares,relied completely on Excel to manage its growing business. As sales and revenue increased, their Excel files became larger and harder to handle — until one day, their key business planning file crashed beyond recovery.
@@ -14,13 +14,14 @@ The goal of this project is to create a centralized SQL-based solution to quickl
 ## Objective
 The main objective of this project is to:
 
-- Perform ad-hoc business analysis using SQL.
-- Automate repetitive analysis by creating stored procedures.
-- Build reusable queries to generate quick reports for different business needs.
-- Help the product owner make data-driven decisions for product, market, and customer strategy.
-- 
+- AtliQ Hardware is one of the major computer hardware manufacturers in India, with a strong presence in other nations.​
+- Nevertheless, the management did note that they do not have sufficient insights to make prompt, wise, and data-informed judgments.​
+- So,they plan to expand the data analytics team by adding junior data analysts.​
+- To assess candidates, Data analytics director, Tony Sharma plans to conduct a SQL challenge to evaluate both tech and soft skills.​
+- The company seeks insights for 10 ad hoc requests.
+
 ## Datasets Used
-This project uses multiple tables from the AtliQ Hardwares database (gdb0041) to perform ad-hoc business analysis and reporting.
+This project uses multiple tables from the AtliQ Hardwares database (gdb023) to perform ad-hoc business analysis and reporting.
 
 ## 📊 Dataset Description
 
@@ -29,29 +30,20 @@ This project uses multiple tables from the AtliQ Hardwares database (gdb0041) to
 | dim_customer                 | Contains customer details such as customer name, market, region, and customer type.   |
 | dim_product                  | Product-related information like product name, variant, division, and category.       |
 | fact_sales_monthly           | Monthly sales performance data including sold quantity, product, customer, and date.  |
-| fact_forecast_monthly        | Forecasted sales quantities for each customer and product by month.                   |
 | fact_gross_price             | Contains product-level gross price details used for revenue calculations.             |
-| fact_act_est                 | Combined table for actual vs. forecast data (created using SQL joins and unions).     |
-| fact_freight_cost            | Details of transportation and freight costs for product deliveries.                   |
 | fact_manufacturing_cost      | Manufacturing cost details for each product.                                          |
 | fact_pre_invoice_deductions  | Pre-invoice deduction data like discounts and offers.                                 |
-| fact_post_invoice_deductions | Post-invoice deductions such as credit notes or returns.                              |
 
 ## Dataset Preview
 
-(Database tables from gdb0041)
+(Database tables from gdb023)
 
 ![Dataset Preview](Resources/Capture4.PNG)
 
-## Ad Hoc Request 1 — Croma India Product-wise Sales Report (FY 2021)
-### Problem Statement
-As a product owner, I want to generate a report of individual product sales (aggregated on a monthly basis at the product code level) for Croma India customer for FY 2021,
-so that I can track product-level performance and run further analytics in Excel.
+## Ad Hoc Request 1
+Provide the list of markets in which customer "Atliq Exclusive" operates its
+business in the APAC region.
 
-### Objective
-Analyze monthly sales for each product under Croma India.
-Identify high-performing products and variants.
-Provide visibility into sales quantity and revenue trends.
 ### SQL Query Used
 🔗 [View SQL Query](Queries/adhoc_1_croma_product_sales.sql)
 
