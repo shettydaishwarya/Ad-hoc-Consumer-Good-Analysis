@@ -1,0 +1,1 @@
+# Ad-hoc-Consumer-Good-Analysis
